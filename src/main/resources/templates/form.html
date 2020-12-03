@@ -1,0 +1,20 @@
+<!--plik order.html-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+</head>
+<body>
+<h1>How old are you?</h1>
+
+<form method="post" th:action="@{/form}" th:object="${howold}" name="howold">
+    <label>
+        Wpisz rok urodzenia:
+        <input type="text" th:field="*{yearOfBirth}">
+    </label>
+
+    <button type="submit">Wyslij</button>
+</form>
+</body>
+</html>
