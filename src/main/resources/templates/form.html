@@ -10,8 +10,12 @@
 
 <form method="post" th:action="@{/form}" th:object="${howold}" name="howold">
     <label>
-        Wpisz rok urodzenia:
-        <input type="text" th:field="*{yearOfBirth}">
+
+        Podaj imie:<br>
+        <input type="text" th:field="*{name}"><br>
+        Podaj rok urodzenia:<br>
+        <input type="text" th:field="*{yearOfBirth}"><br>
+
     </label>
 
     <button type="submit">Wyslij</button>

@@ -7,8 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class HowOld {
+public class Person {
 
     private int yearOfBirth;
+    private String name;
 
 }
