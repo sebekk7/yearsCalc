@@ -1,6 +1,10 @@
 package com.example.HowOldAreYou2;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,10 +12,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Handler;
 
+@Service
 @Controller
 public class HowOldController {
-
 
     @GetMapping("/form")
     public String showOrderForm(final ModelMap modelMap) {
@@ -19,17 +26,15 @@ public class HowOldController {
         return "form";
     }
 
+
     @PostMapping("/form")
     public String handleNewOrder(@ModelAttribute("howold") final Person person, Model model) {
 
-        int localDate = LocalDate.now().getYear();
-        String years = String.valueOf(localDate - person.getYearOfBirth());
+        int year = LocalDate.now().getYear() - person.getYearOfBirth();
         String name = person.getName();
 
-
-        model.addAttribute("yearsCalc", years);
+        model.addAttribute("yearsCalc", year);
         model.addAttribute("name", name);
-
 
         return "yearspage";
     }
