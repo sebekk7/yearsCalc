@@ -6,9 +6,22 @@
     <title>Orders</title>
 </head>
 <body>
+
+
+<p th th:text="${name}"></p>
+
+<p1>Masz </p1>
+
+<p1 th:text="${yearsCalc}"></p1>
+
+<p1>lat</p1>
+
+<br><br><br>
+
+
 <h1>How old are you?</h1>
 
-<form method="post" th:action="@{/form}" th:object="${howold}" name="howold">
+<form th:action="@{/form}" th:object="${person}" name="howold" method="post">
     <label>
 
         Podaj imie:<br>
