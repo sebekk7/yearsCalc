@@ -39,7 +39,7 @@ public class HowOldController {
         model.addAttribute("yearsCalc", year);
 
         personRepo.save(new Person(name, year));
-
+        model.addAttribute("person", personRepo.findAll());
         return "form";
     }
 
