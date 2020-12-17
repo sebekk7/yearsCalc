@@ -1,4 +1,3 @@
-<!--plik order.html-->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -7,21 +6,19 @@
 </head>
 <body>
 
-
-<p th th:text="${name}"></p>
-
-<p1>Masz </p1>
-
-<p1 th:text="${yearsCalc}"></p1>
-
-<p1>lat</p1>
-
-<br><br><br>
+<tr th:each="person : ${personList}">
+    <td th:text="${person.getName()}"/>
+    <br>
+    Masz
+    <td th:text="${person.getYears()}"/>
+    lat<br>
+    <p>-----------</p>
+</tr>
 
 
-<h1>How old are you?</h1>
+<h1>Jak sie nazywasz?</h1>
 
-<form th:action="@{/form}" th:object="${person}" name="howold" method="post">
+<form th:action="@{/form}" th:object="${newPerson}" name="name" method="post">
     <label>
 
         Podaj imie:<br>
@@ -30,7 +27,6 @@
         <input type="text" th:field="*{yearOfBirth}"><br>
 
     </label>
-
     <button type="submit">Wyslij</button>
 </form>
 </body>
