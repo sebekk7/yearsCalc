@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -27,14 +28,14 @@ public class PersonController {
     private final List<Person> personList = new ArrayList<>();
 
     @GetMapping("/form")
-    public String showOrderForm(final ModelMap modelMap) {
-        modelMap.addAttribute("newPerson", new Person());
-        modelMap.addAttribute("personList", personList);
+    public String showOrderForm(final Model model) {
+        model.addAttribute("newPerson", new Person());
+        model.addAttribute("personList", personList);
         return "form";
     }
 
     @PostMapping("/form")
-    public String addUser(@Valid Person person, Model model) {
+    public String addUser(Person person, Model model) {
 
         person.setYears(LocalDate.now().getYear() - person.getYearOfBirth());
 
