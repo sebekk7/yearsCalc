@@ -6,12 +6,29 @@
 </head>
 <body>
 
-<tr th:each="person : ${personList}">
-    <td th:text="${person.getName()}"/>
+<!--Widok Listy:<br>-->
+<!--<tr th:each="person : ${personList}">-->
+<!--    <td th:text="${person.getName()}"/>-->
+<!--    <br>-->
+<!--    Masz-->
+<!--    <td th:text="${person.getYears()}"/>-->
+<!--    lat<br>-->
+<!--<br>-->
+<!--    <br>-->
+<!--    <p>-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
+<!--</tr>-->
+
+
+<tr th:each="person : ${showRepo}">
+    <td th:text="${person.name}"></td>
     <br>
     Masz
-    <td th:text="${person.getYears()}"/>
+    <td th:text="${person.years}"></td>
     lat<br>
+
+    <td>
+    <a th:href="@{/delete/{id}(id=${person.id})}" class="btn btn-primary"><button type="submit">Delete</button></a>
+    </td>
     <p>-----------</p>
 </tr>
 
